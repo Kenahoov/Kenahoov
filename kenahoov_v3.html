@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenahoov – Aiateenus Tallinnas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gd:#1C3A2B;--gm:#2D5A3E;--gs:#4A7C59;--gl:#7AAE88;--gp:#C8DFC8;--gw:#EEF5EE;--cream:#F7F5F0;--earth:#8B6B3D;--el:#C4A876;--white:#FFFFFF;--td:#1A2B1F;--tm:#3D5245;--mu:#6B8270}
+body{font-family:'Inter',sans-serif;color:var(--td);background:var(--white);overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif}
+nav{position:sticky;top:0;z-index:100;background:rgba(28,58,43,0.97);backdrop-filter:blur(8px);padding:0 2rem}
+.ni{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:.02em}
+.logo span{color:var(--gl)}
+.nl{display:flex;gap:1.5rem;list-style:none}
+.nl a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:500;cursor:pointer;transition:color .2s}
+.nl a:hover{color:#fff}
+.ncta{background:var(--earth);color:#fff!important;padding:.4rem 1rem;border-radius:4px}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{width:22px;height:2px;background:white;border-radius:2px}
+.mm{display:none;position:absolute;top:64px;left:0;right:0;background:var(--gd);padding:1rem 2rem;flex-direction:column;gap:.5rem}
+.mm a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer}
+.mm.open{display:flex}
+.ps{display:none}
+.ps.active{display:block}
+.hero{background:linear-gradient(135deg,var(--gd) 0%,var(--gm) 60%,var(--gs) 100%);min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hbp{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.hg{position:absolute;bottom:0;left:0;right:0;height:80px;overflow:hidden}
+.hg svg{width:100%;height:100%}
+.hi{max-width:1100px;margin:0 auto;padding:5rem 2rem 8rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.ht h1{font-size:clamp(2.2rem,5vw,3.6rem);color:#fff;line-height:1.1;margin-bottom:1.2rem}
+.ht h1 em{color:var(--gl);font-style:normal}
+.htag{color:rgba(255,255,255,.75);font-size:1.1rem;line-height:1.7;margin-bottom:2rem;font-weight:300}
+.hbadge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.35rem 1rem;color:rgba(255,255,255,.9);font-size:.8rem;margin-bottom:1.5rem}
+.hbtns{display:flex;gap:1rem;flex-wrap:wrap}
+.bp{background:var(--earth);color:white;border:none;padding:.85rem 2rem;border-radius:4px;font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:.03em;transition:all .2s;text-decoration:none;display:inline-block}
+.bp:hover{background:var(--el);transform:translateY(-1px)}
+.bo{background:transparent;color:white;border:1.5px solid rgba(255,255,255,.5);padding:.85rem 2rem;border-radius:4px;font-size:.95rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.bo:hover{border-color:white;background:rgba(255,255,255,.08)}
+.hst{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.15)}
+.sn{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;display:block}
+.sl{font-size:.75rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase}
+.hv{display:flex;flex-direction:column;gap:1rem}
+.hc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:1.25rem}
+.hct{color:var(--gl);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.hcc{color:white;font-size:.9rem;line-height:1.5}
+.tp{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.tpp{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.25rem .75rem;color:rgba(255,255,255,.85);font-size:.75rem}
+.sec{padding:5rem 2rem}
+.si{max-width:1100px;margin:0 auto}
+.ey{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--earth);font-weight:600;margin-bottom:.75rem}
+.st{font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--gd);line-height:1.2;margin-bottom:1rem}
+.ss{color:var(--mu);font-size:1rem;line-height:1.7;max-width:560px}
+.hs{background:var(--gd);padding:5rem 2rem}
+.hw{max-width:1100px;margin:0 auto}
+.htit{font-size:clamp(1.8rem,3vw,2.4rem);color:white;text-align:center;margin-bottom:.75rem}
+.hsub{color:rgba(255,255,255,.65);text-align:center;margin-bottom:3.5rem;font-size:1rem}
+.hsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem}
+.hstep{text-align:center}
+.snum{width:52px;height:52px;border-radius:50%;background:var(--earth);color:white;font-family:'Playfair Display',serif;font-size:1.3rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.stit{color:white;font-weight:600;margin-bottom:.5rem;font-size:1rem}
+.sd{color:rgba(255,255,255,.6);font-size:.875rem;line-height:1.6}
+.pn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:1.25rem 2rem;margin-top:3rem;text-align:center;color:rgba(255,255,255,.8);font-size:.9rem}
+.pn strong{color:var(--gl)}
+.ws{padding:5rem 2rem}
+.wg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2rem}
+.wc{padding:1.75rem;border-left:3px solid var(--gs);background:var(--gw);border-radius:0 12px 12px 0}
+.wi{font-size:1.6rem;margin-bottom:.75rem}
+.wt{font-weight:700;color:var(--gd);margin-bottom:.4rem;font-size:1rem}
+.wd{color:var(--mu);font-size:.875rem;line-height:1.6}
+.svc{background:var(--cream);padding:5rem 2rem}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2.5rem}
+.sc{background:var(--white);border:1px solid rgba(74,124,89,.15);border-radius:12px;padding:1.5rem;transition:all .25s;position:relative}
+.sc:hover{border-color:var(--gs);transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,58,43,.1)}
+.sci{width:44px;height:44px;background:var(--gw);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.4rem}
+.scn{font-weight:600;color:var(--gd);margin-bottom:.4rem;font-size:1rem}
+.scd{color:var(--mu);font-size:.85rem;line-height:1.6}
+.scb{position:absolute;top:1rem;right:1rem;background:var(--gw);color:var(--gs);font-size:.7rem;padding:.2rem .6rem;border-radius:50px;font-weight:600}
+.pkg{padding:5rem 2rem}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem;align-items:start}
+.pc{border:1.5px solid rgba(74,124,89,.2);border-radius:16px;padding:2rem;position:relative;transition:all .3s}
+.pc.feat{border-color:var(--gs);background:var(--gd)}
+.pb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--earth);color:white;font-size:.7rem;padding:.3rem 1rem;border-radius:50px;letter-spacing:.08em;white-space:nowrap}
+.pn2{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.3rem}
+.pc.feat .pn2{color:white}
+.pp{font-size:.82rem;color:var(--mu);margin-bottom:1.25rem}
+.pc.feat .pp{color:rgba(255,255,255,.6)}
+.pl{list-style:none;margin-bottom:1.5rem}
+.pl li{padding:.38rem 0;font-size:.875rem;color:var(--tm);display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(74,124,89,.08)}
+.pc.feat .pl li{color:rgba(255,255,255,.8);border-bottom-color:rgba(255,255,255,.08)}
+.pl li::before{content:'✓';color:var(--gs);font-weight:700;flex-shrink:0}
+.pc.feat .pl li::before{color:var(--gl)}
+.pbt{width:100%;padding:.85rem;border-radius:6px;font-weight:600;cursor:pointer;font-size:.9rem;transition:all .2s;border:none;font-family:'Inter',sans-serif}
+.pbl{background:var(--gw);color:var(--gd)}
+.pbd{background:var(--earth);color:white}
+.pbl:hover{background:var(--gp)}
+.pbd:hover{background:var(--el)}
+.custom-pkg{border:2px dashed rgba(74,124,89,.35);border-radius:16px;padding:2rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;min-height:280px;cursor:pointer;transition:all .3s}
+.custom-pkg:hover{border-color:var(--gs);background:var(--gw)}
+.custom-icon{font-size:2.5rem;margin-bottom:.5rem}
+.custom-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gd)}
+.custom-sub{color:var(--mu);font-size:.85rem;line-height:1.6;max-width:200px}
+.custom-btn{background:var(--gd);color:white;border:none;padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.custom-btn:hover{background:var(--gm)}
+.gals{background:var(--gd);padding:5rem 2rem}
+.gt{color:white;text-align:center;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:.75rem}
+.gsb{color:rgba(255,255,255,.6);text-align:center;margin-bottom:2.5rem}
+.gg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.gi{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/3}
+.gii{width:100%;height:100%;display:flex}
+.gh{flex:1;display:flex;align-items:flex-end;padding:1rem;position:relative}
+.gbef{background:linear-gradient(135deg,#2a3d2a 0%,#3d5c3a 100%)}
+.gaft{background:linear-gradient(135deg,#1a4a25 0%,#2d7a3a 100%)}
+.gdiv{width:3px;background:white;position:relative;z-index:2;flex-shrink:0}
+.glb{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(0,0,0,.4);padding:.25rem .6rem;border-radius:4px}
+.gic{font-size:2.5rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);opacity:.25}
+.gaft .gic{opacity:.6}
+.gcap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:1.5rem 1rem .75rem;color:white;font-size:.8rem;font-weight:500}
+.gnote{color:rgba(255,255,255,.45);text-align:center;font-size:.8rem;margin-top:1.25rem;font-style:italic}
+.revs{padding:5rem 2rem;background:var(--gd)}
+.rt{color:white;text-align:center;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:.75rem}
+.rsb{color:rgba(255,255,255,.6);text-align:center;margin-bottom:2.5rem}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.rc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.5rem}
+.rs{color:var(--el);font-size:1rem;margin-bottom:.75rem;letter-spacing:2px}
+.rtx{color:rgba(255,255,255,.85);font-size:.9rem;line-height:1.7;font-style:italic;margin-bottom:1rem}
+.ra{color:rgba(255,255,255,.5);font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.faqs{padding:5rem 2rem;background:var(--cream)}
+.fi{max-width:700px;margin:0 auto}
+.fl{margin-top:2rem}
+.fitem{border-bottom:1px solid rgba(74,124,89,.15);overflow:hidden}
+.fq{width:100%;text-align:left;background:none;border:none;padding:1.1rem 0;font-size:.95rem;font-weight:600;color:var(--gd);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif}
+.farr{color:var(--gs);font-size:1.1rem;transition:transform .3s;flex-shrink:0}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.fai{padding:0 0 1rem;color:var(--mu);font-size:.875rem;line-height:1.7}
+.fitem.open .farr{transform:rotate(180deg)}
+.fitem.open .fa{max-height:200px}
+.abs{padding:5rem 2rem}
+.abi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.abv{background:var(--gd);border-radius:16px;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden}
+.ablb{position:absolute;inset:0;opacity:.06;font-size:8rem;display:flex;align-items:center;justify-content:center}
+.abin{width:80px;height:80px;background:var(--earth);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2rem;color:white;margin-bottom:1rem;position:relative;z-index:1}
+.abna{color:white;font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.25rem;position:relative;z-index:1}
+.abr{color:rgba(255,255,255,.6);font-size:.8rem;position:relative;z-index:1}
+.abst{font-size:1rem;line-height:1.8;color:var(--tm)}
+.abst p{margin-bottom:1rem}
+.abvs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+.abv2{background:var(--gw);color:var(--gd);padding:.3rem .8rem;border-radius:50px;font-size:.8rem;font-weight:600}
+.cts{background:var(--gd);padding:5rem 2rem}
+.cti{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.ctt{font-size:clamp(1.8rem,3vw,2.4rem);color:white;margin-bottom:.75rem}
+.ctb{color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
+.ctis{display:flex;flex-direction:column;gap:1rem}
+.cit{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px}
+.cion{font-size:1.3rem;width:36px;flex-shrink:0}
+.cdl{font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.15rem}
+.cdv{color:white;font-size:.9rem;font-weight:500}
+.cfw{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:2rem}
+.cft{color:white;font-size:1.1rem;font-weight:600;margin-bottom:1.25rem}
+.cin{width:100%;padding:.7rem 1rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:8px;color:white;font-size:.875rem;font-family:'Inter',sans-serif;margin-bottom:.75rem;outline:none;transition:border-color .2s}
+.cin::placeholder{color:rgba(255,255,255,.35)}
+.cin:focus{border-color:var(--gl)}
+.cta2{width:100%;background:var(--earth);color:white;border:none;padding:.85rem;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.cta2:hover{background:var(--el)}
+footer{background:#111d15;padding:2rem;text-align:center;color:rgba(255,255,255,.35);font-size:.8rem}
+footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.area-section{background:var(--cream);padding:5rem 2rem}
+.area-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.zp{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.zpill{background:white;border:1.5px solid rgba(74,124,89,.2);border-radius:50px;padding:.4rem 1rem;font-size:.85rem;color:var(--gd);font-weight:500}
+.zpill.main{background:var(--gd);color:white;border-color:var(--gd)}
+.amap{background:var(--gd);border-radius:16px;min-height:300px;display:flex;align-items:center;justify-content:center}
+
+.bks{background:var(--cream);padding:5rem 2rem}
+.bki{max-width:820px;margin:0 auto}
+.fw{background:white;border-radius:16px;padding:2.5rem;border:1px solid rgba(74,124,89,.12);margin-top:2.5rem}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg{margin-bottom:1rem}
+.fl2{display:block;font-size:.8rem;font-weight:600;color:var(--gd);margin-bottom:.4rem;letter-spacing:.04em}
+.fi2,.fsel,.fta{width:100%;padding:.75rem 1rem;border:1.5px solid rgba(74,124,89,.2);border-radius:8px;font-size:.9rem;color:var(--td);background:white;font-family:'Inter',sans-serif;transition:border-color .2s;outline:none}
+.fi2:focus,.fsel:focus,.fta:focus{border-color:var(--gs)}
+.fta{height:90px;resize:vertical}
+.scbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.5rem;margin-top:.5rem}
+.cbi{display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;border:1.5px solid rgba(74,124,89,.15);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.85rem;color:var(--tm)}
+.cbi:hover{border-color:var(--gs);background:var(--gw)}
+.cbi input{accent-color:var(--gs);width:15px;height:15px;cursor:pointer}
+.subbtn{width:100%;background:var(--gd);color:white;border:none;padding:1rem;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;margin-top:1rem;transition:all .2s;font-family:'Inter',sans-serif}
+.subbtn:hover{background:var(--gm);transform:translateY(-1px)}
+.fnote{text-align:center;font-size:.8rem;color:var(--mu);margin-top:.75rem}
+.pkg-sel-banner{background:var(--gw);border:1.5px solid rgba(74,124,89,.3);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.psb-icon{font-size:1.5rem}
+.psb-text{font-size:.9rem;color:var(--gd);font-weight:500}
+.psb-clear{background:none;border:none;color:var(--mu);font-size:.8rem;cursor:pointer;margin-left:auto;text-decoration:underline;font-family:'Inter',sans-serif}
+@media(max-width:768px){
+  .nl{display:none}.hbg{display:flex}
+  .hi{grid-template-columns:1fr;gap:2rem;padding:3rem 1rem 6rem}.hv{display:none}
+  .fr{grid-template-columns:1fr}
+  .abi,.cti,.area-inner{grid-template-columns:1fr}
+  .sec{padding:3.5rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <div class="logo">Kena<span>hoov</span></div>
+    <ul class="nl">
+      <li><a onclick="sp('home')">Avaleht</a></li>
+      <li><a onclick="sp('services')">Teenused</a></li>
+      <li><a onclick="sp('about')">Meist</a></li>
+      <li><a onclick="sp('gallery')">Galerii</a></li>
+      <li><a onclick="sp('reviews')">Tagasiside</a></li>
+      <li><a onclick="sp('contact')">Kontakt</a></li>
+      <li><a onclick="sp('booking')" class="ncta">Küsi hinda</a></li>
+    </ul>
+    <div class="hbg" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mm" id="mm">
+    <a onclick="sp('home');cm()">Avaleht</a>
+    <a onclick="sp('services');cm()">Teenused</a>
+    <a onclick="sp('about');cm()">Meist</a>
+    <a onclick="sp('gallery');cm()">Galerii</a>
+    <a onclick="sp('reviews');cm()">Tagasiside</a>
+    <a onclick="sp('contact');cm()">Kontakt</a>
+    <a onclick="sp('booking');cm()">Küsi hinda</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="ps active">
+  <div class="hero">
+    <div class="hbp"></div>
+    <div class="hi">
+      <div class="ht">
+        <div class="hbadge">🌿 Tallinna aiateenus</div>
+        <h1>Sinu aed väärib <em>hoolt</em> ja armastust</h1>
+        <p class="htag">Professionaalne aiakujundus ja hooldus Tallinnas. Muruplats, hekid, terrassid – me hoolitseme iga nurga eest.</p>
+        <div class="hbtns">
+          <a class="bp" onclick="sp('booking')" style="cursor:pointer">Küsi hinda</a>
+          <a class="bo" onclick="sp('services')" style="cursor:pointer">Meie teenused</a>
+        </div>
+        <div class="hst">
+          <div style="text-align:center"><span class="sn">2+</span><span class="sl">Aastat kogemust</span></div>
+          <div style="text-align:center"><span class="sn">50+</span><span class="sl">Õnnelikku klienti</span></div>
+          <div style="text-align:center"><span class="sn">100%</span><span class="sl">Garantii</span></div>
+        </div>
+      </div>
+      <div class="hv">
+        <div class="hc"><div class="hct">✅ Miks valida meid?</div><div class="tp"><span class="tpp">🏡 Kohalik ettevõte</span><span class="tpp">⏱ Täpne ajakava</span><span class="tpp">🌱 Keskkonnasõbralik</span><span class="tpp">💰 Aus hinnakujundus</span></div></div>
+        <div class="hc"><div class="hct">📍 Teeninduspiirkond</div><div class="hcc">Tallinn – Merivälja, Mähe, Viimsi, Haabneeme, Randvere, Muuga</div></div>
+        <div class="hc"><div class="hct">📞 Võta ühendust</div><div class="hcc">Tel: +372 56877101<br>info@kenahoov.ee</div></div>
+      </div>
+    </div>
+    <div class="hg"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C180,0 360,80 540,40 C720,0 900,80 1080,40 C1260,0 1380,60 1440,40 L1440,80 L0,80 Z" fill="#F7F5F0"/></svg></div>
+  </div>
+
+  <div class="hs">
+    <div class="hw">
+      <h2 class="htit" style="font-family:'Playfair Display',serif">Kuidas see toimib?</h2>
+      <p class="hsub">Lihtne ja läbipaistev protsess algusest lõpuni</p>
+      <div class="hsteps">
+        <div class="hstep"><div class="snum">1</div><div class="stit">Saada päring</div><div class="sd">Täida vorm, vali teenused ja sobiv kuupäev. Vastame 24 tunni jooksul.</div></div>
+        <div class="hstep"><div class="snum">2</div><div class="stit">Lepime kokku</div><div class="sd">Hindame töömahu ja kinnitame hinna. Pole peidetud kulusid.</div></div>
+        <div class="hstep"><div class="snum">3</div><div class="stit">Töö algab</div><div class="sd">Tuleme kohale kokkulepitud ajal kõigi vahendite ja masinatega.</div></div>
+        <div class="hstep"><div class="snum">4</div><div class="stit">Naudi tulemust</div><div class="sd">Kontrollid töö üle ja oled rahul – alles siis tasud teise poole.</div></div>
+      </div>
+      <div class="pn">💡 <strong>Turvaline makseskeem:</strong> Maksad 50% enne töö algust ja 50% pärast lõpetamist ning ülevaatust. Täielik rahulolek garanteeritud.</div>
+    </div>
+  </div>
+
+  <div class="ws">
+    <div class="si">
+      <div class="ey">Miks Kenahoov?</div>
+      <h2 class="st">Usaldusväärne partner sinu aiale</h2>
+      <div class="wg">
+        <div class="wc"><div class="wi">🌿</div><div class="wt">Keskkonnasõbralik</div><div class="wd">Kasutame keskkonnasäästlikke lahendusi ja vastutuslikku prügikäitlust.</div></div>
+        <div class="wc"><div class="wi">⏱️</div><div class="wt">Täpne ja usaldusväärne</div><div class="wd">Tuleme alati kokkulepitud ajal. Sinu aeg on meile tähtis.</div></div>
+        <div class="wc"><div class="wi">🏡</div><div class="wt">Kohalik ettevõte</div><div class="wd">Oleme Tallinnast ja tunneme kohalikku kliimat, taimi ja maastikku.</div></div>
+        <div class="wc"><div class="wi">💰</div><div class="wt">Aus hinnakujundus</div><div class="wd">Selge hind eelnevalt, ilma üllatuste ja peidetud tasudeta.</div></div>
+        <div class="wc"><div class="wi">✅</div><div class="wt">Tulemusgarantii</div><div class="wd">Ei ole rahul? Parandame tasuta. Sinu rahulolu on meie prioriteet.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--cream);padding:5rem 2rem">
+    <div class="si" style="text-align:center">
+      <div class="ey">Paketid</div>
+      <h2 class="st" style="margin:0 auto .75rem">Vali sobiv pakett</h2>
+      <p class="ss" style="margin:0 auto 2rem">Kogupakettidega säästad nii aega kui raha</p>
+      <a class="bp" onclick="sp('services')" style="cursor:pointer">Vaata kõiki pakette →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services" class="ps">
+  <div class="svc" style="padding-top:4rem">
+    <div class="si">
+      <div class="ey">Meie teenused</div>
+      <h2 class="st">Kõik, mida sinu aed vajab</h2>
+      <p class="ss">Vali üksikteenused või soodsamad paketid allpool</p>
+      <div class="sg">
+        <div class="sc"><div class="sci">🌿</div><div class="scn">Muruniitmine</div><div class="scd">Professionaalne muruniitmine, jätame täpse ja ühtlase tulemuse.</div></div>
+        <div class="sc"><div class="sci">✂️</div><div class="scn">Heki lõikamine</div><div class="scd">Hekid ja põõsad kujundatakse täpselt ja professionaalselt.</div></div>
+        <div class="sc"><div class="sci">🌱</div><div class="scn">Umbrohu korjamine</div><div class="scd">Eemaldame umbrohud peenardest, teedelt ja kivide vahelt.</div></div>
+        <div class="sc"><div class="sci">🔧</div><div class="scn">Trimmeriga lõikamine</div><div class="scd">Servad, nurgad ja äärised – jõuame sinna, kuhu niiduk ei ulatu.</div></div>
+        <div class="sc"><div class="sci">💧</div><div class="scn">Survepesu</div><div class="scd">Terrassid, sillutised, aiad ja fassaadid puhtaks survepesuga.</div></div>
+        <div class="sc"><div class="sci">🧹</div><div class="scn">Sammalde eemaldamine</div><div class="scd">Sammal treppidelt, müüridelt, aedadelt ja kividelt.</div></div>
+        <div class="sc"><div class="sci">🌸</div><div class="scn">Õietolmu pesemine</div><div class="scd">Kevadine õietolm fassaadidelt ja pindadelt.</div></div>
+        <div class="sc"><div class="sci">🍂</div><div class="scn">Multšimine</div><div class="scd">Peenarde multšimine hoiab niiskuse ja kaitseb taimi.</div></div>
+        <div class="sc"><div class="sci">🌳</div><div class="scn">Okste eemaldamine</div><div class="scd">Puuokste lõikamine ja eemaldamine, sh õunapuu kujundamine – Eestis suures nõudluses!</div><div class="scb">🔥 Populaarne</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pkg">
+    <div class="si">
+      <div class="ey">Teenuspaketid</div>
+      <h2 class="st">Vali oma pakett</h2>
+      <p class="ss">Kompleksteenused on alati soodsam valik</p>
+      <div class="pg">
+
+        <div class="pc">
+          <div class="pn2">Kerge hooldus</div>
+          <div class="pp">Ideaalne regulaarseks hoolduseks</div>
+          <ul class="pl">
+            <li>Muruniitmine</li>
+            <li>Trimmeriga lõikamine</li>
+          </ul>
+          <button class="pbt pbl" onclick="selectPkg('Kerge hooldus',['Muruniitmine','Trimmeriga lõikamine'])">Telli pakett</button>
+        </div>
+
+        <div class="pc feat">
+          <div class="pb">⭐ Populaarseim</div>
+          <div class="pn2">Standard</div>
+          <div class="pp">Täishooldus hooajaks</div>
+          <ul class="pl">
+            <li>Muruniitmine</li>
+            <li>Trimmeriga lõikamine</li>
+            <li>Umbrohu korjamine</li>
+            <li>Multšimine (vajadusel)</li>
+            <li>Survepesu</li>
+          </ul>
+          <button class="pbt pbd" onclick="selectPkg('Standard',['Muruniitmine','Trimmeriga lõikamine','Umbrohu korjamine','Multšimine','Survepesu'])">Telli pakett</button>
+        </div>
+
+        <div class="pc">
+          <div class="pn2">Täis pakett</div>
+          <div class="pp">Kõikehõlmav kompleksteenindus</div>
+          <ul class="pl">
+            <li>Muruniitmine</li>
+            <li>Trimmeriga lõikamine</li>
+            <li>Umbrohu korjamine</li>
+            <li>Multšimine (vajadusel)</li>
+            <li>Survepesu</li>
+            <li>Heki lõikamine</li>
+            <li>Okste eemaldamine</li>
+            <li>Õietolmu pesemine</li>
+            <li>Sammalde eemaldamine</li>
+            <li>Prioriteetne ajakava</li>
+          </ul>
+          <button class="pbt pbl" onclick="selectPkg('Täis pakett',['Muruniitmine','Trimmeriga lõikamine','Umbrohu korjamine','Multšimine','Survepesu','Heki lõikamine','Okste eemaldamine','Õietolmu pesemine','Sammalde eemaldamine'])">Telli pakett</button>
+        </div>
+
+        <div class="custom-pkg" onclick="sp('booking')">
+          <div class="custom-icon">🛠️</div>
+          <div class="custom-title">Vali vajalikud teenused</div>
+          <div class="custom-sub">Koosta ise oma sobiv teenuste kombinatsioon</div>
+          <button class="custom-btn" onclick="event.stopPropagation();selectPkg('Kohandatud',[])">Koosta oma pakett →</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="area-section">
+    <div class="area-inner">
+      <div>
+        <div class="ey">Teeninduspiirkond</div>
+        <h2 class="st">Katame Tallinna ja lähiümbruse</h2>
+        <p style="color:var(--mu);font-size:.95rem;line-height:1.7;margin-bottom:1.25rem">Praegu teenindame Tallinna lääne- ja põhjapiirkondi, sh rannikuäärseid alasid.</p>
+        <div class="zp">
+          <span class="zpill main">Tallinn</span>
+          <span class="zpill">Merivälja</span>
+          <span class="zpill">Mähe</span>
+          <span class="zpill">Viimsi</span>
+          <span class="zpill">Haabneeme</span>
+          <span class="zpill">Randvere</span>
+          <span class="zpill">Muuga</span>
+        </div>
+        <p style="color:var(--mu);font-size:.8rem;margin-top:1rem">Piirkonda laiendatakse peagi. <a onclick="sp('contact')" style="color:var(--gs);cursor:pointer">Küsi meilt</a>, kas sinu asukoht on kaetud.</p>
+      </div>
+      <div class="amap"><div style="text-align:center"><div style="font-size:3rem;margin-bottom:1rem">🗺️</div><div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:white;margin-bottom:.5rem">Tallinn & lähiümbrused</div><div style="color:rgba(255,255,255,.6);font-size:.85rem">Merivälja · Mähe · Viimsi<br>Haabneeme · Randvere · Muuga</div></div></div>
+    </div>
+  </div>
+
+  <div class="faqs">
+    <div class="fi">
+      <div style="text-align:center"><div class="ey">KKK</div><h2 class="st">Korduma kippuvad küsimused</h2></div>
+      <div class="fl">
+        <div class="fitem"><button class="fq" onclick="toggleFaq(this)">Kas toote ise töövahendid? <span class="farr">▼</span></button><div class="fa"><div class="fai">Jah, kõik vajalikud seadmed ja töövahendid toome me endaga. Sina ei pea muretsema millegi pärast.</div></div></div>
+        <div class="fitem"><button class="fq" onclick="toggleFaq(this)">Kui tihti peaks muru niitma? <span class="farr">▼</span></button><div class="fa"><div class="fai">Eesti kliimas soovitame niita iga 1–2 nädala tagant kasvuhooajal (mai–september).</div></div></div>
+        <div class="fitem"><button class="fq" onclick="toggleFaq(this)">Millal on parim aeg oksi lõigata? <span class="farr">▼</span></button><div class="fa"><div class="fai">Eestis on parim aeg varakevad (märts–aprill) enne pungade puhkemist või hilissügis pärast lehtede langemist.</div></div></div>
+        <div class="fitem"><button class="fq" onclick="toggleFaq(this)">Mis saab lõigatud okste ja rohuga? <span class="farr">▼</span></button><div class="fa"><div class="fai">Viime kõik jäätmed ära oma kulul. Kui soovid, võime muru mahajäätmed jätta multšimiseks.</div></div></div>
+        <div class="fitem"><button class="fq" onclick="toggleFaq(this)">Kuidas töö eest tasutakse? <span class="farr">▼</span></button><div class="fa"><div class="fai">Kasutame turvalist makseskeemi: 50% enne töö algust ja 50% pärast ülevaatust. Aktsepteerime pangaülekannet ja sularaha.</div></div></div>
+        <div class="fitem"><button class="fq" onclick="toggleFaq(this)">Kas töötate ka kehva ilmaga? <span class="farr">▼</span></button><div class="fa"><div class="fai">Kerge vihma korral saab töötada, kuid äikesetormi või tugeva vihma korral lükkame töö edasi. Sobime uue aja alati kiiresti.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="ps">
+  <div class="abs">
+    <div class="abi">
+      <div class="abv">
+        <div class="ablb">🌿</div>
+        <div class="abin">KH</div>
+        <div class="abna">Kenahoov OÜ</div>
+        <div class="abr">Aiateenus Tallinnas alates 2023</div>
+        <div style="height:1px;background:rgba(255,255,255,.15);width:80%;margin:1.5rem 0"></div>
+        <div style="color:rgba(255,255,255,.55);font-size:.8rem;text-align:center;line-height:1.8;position:relative;z-index:1">📍 Tallinn, Eesti<br>📞 +372 56877101<br>📧 info@kenahoov.ee</div>
+      </div>
+      <div>
+        <div class="ey">Meie lugu</div>
+        <h2 class="st">Meist</h2>
+        <div class="abst">
+          <p>Kenahoov sai alguse lihtsast armastusest looduse ja kaunite aedade vastu. Asutasime oma väikese aiahoolduse ettevõtte Tallinnas, et pakkuda ümbruskonnale usaldusväärseid, ausaid ja professionaalseid aiateenuseid.</p>
+          <p>Meie meeskond on aastate jooksul kasvanud, kuid meie väärtused on jäänud samaks: täpne töö, aus hind ja kliendi rahulolu iga kord.</p>
+          <p>Eesti loodus on meile südamelähedane – eriti meie õunapuud. Seetõttu oleme spetsialiseerunud ka puuhooldusele ja pakume teadlikku puude lõikamist.</p>
+          <p>Meile on oluline, et klient tunneks end kindlalt – seetõttu töötame läbipaistva makseskeemiga ja garanteerime oma töö kvaliteedi.</p>
+        </div>
+        <div class="abvs">
+          <span class="abv2">🌿 Professionaalsus</span>
+          <span class="abv2">🤝 Usaldusväärsus</span>
+          <span class="abv2">💚 Keskkonnateadlikkus</span>
+          <span class="abv2">⭐ Kvaliteet</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="ps">
+  <div class="gals" style="padding-top:4rem">
+    <h2 class="gt" style="font-family:'Playfair Display',serif">Enne & Pärast</h2>
+    <p class="gsb">Tulemused räägivad enda eest</p>
+    <div class="gg">
+      <div class="gi"><div class="gii"><div class="gh gbef"><div class="gic">🌿</div><span class="glb">Enne</span></div><div class="gdiv"></div><div class="gh gaft"><div class="gic">✨</div><span class="glb">Pärast</span></div></div><div class="gcap">Muru niitmine – Viimsi</div></div>
+      <div class="gi"><div class="gii"><div class="gh gbef" style="background:linear-gradient(135deg,#3a3a2a,#5c5c3a)"><div class="gic">🧱</div><span class="glb">Enne</span></div><div class="gdiv"></div><div class="gh gaft" style="background:linear-gradient(135deg,#2a3a4a,#3a6a8a)"><div class="gic">💧</div><span class="glb">Pärast</span></div></div><div class="gcap">Survepesu – Merivälja</div></div>
+      <div class="gi"><div class="gii"><div class="gh gbef" style="background:linear-gradient(135deg,#2a3a1a,#4a5a2a)"><div class="gic">🌳</div><span class="glb">Enne</span></div><div class="gdiv"></div><div class="gh gaft" style="background:linear-gradient(135deg,#1a4a15,#2d6a20)"><div class="gic">🍎</div><span class="glb">Pärast</span></div></div><div class="gcap">Okste eemaldamine – Haabneeme</div></div>
+    </div>
+    <p class="gnote">📸 Päris fotod lisatakse peagi!</p>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div id="reviews" class="ps">
+  <div class="revs" style="padding-top:4rem">
+    <h2 class="rt" style="font-family:'Playfair Display',serif">Klientide tagasiside</h2>
+    <p class="rsb">Mida meie kliendid arvavad</p>
+    <div class="rg" style="max-width:1100px;margin:0 auto">
+      <div class="rc"><div class="rs">★★★★★</div><p class="rtx">"Suurepärane töö! Muru on imeilusaks saanud ja meeskond on väga täpne ja sõbralik."</p><div class="ra">– Mari K., Merivälja</div></div>
+      <div class="rc"><div class="rs">★★★★★</div><p class="rtx">"Meie õunapuud nägid kohutavad välja – Kenahoov tegi neist ilusad ja terved puud!"</p><div class="ra">– Jüri T., Viimsi</div></div>
+      <div class="rc"><div class="rs">★★★★★</div><p class="rtx">"Terrassi survepesu oli imeline – kümne aasta mustus läks lahti mõne tunniga."</p><div class="ra">– Liisa M., Haabneeme</div></div>
+      <div class="rc"><div class="rs">★★★★☆</div><p class="rtx">"Korralik töö, täpsel ajal, nagu lubatud. Hekid on nüüd ilusti kujundatud."</p><div class="ra">– Peeter V., Randvere</div></div>
+      <div class="rc"><div class="rs">★★★★★</div><p class="rtx">"Parim aiafirma! Ausad hinnad, suurepärane töö ja inimlik suhtumine. 10/10."</p><div class="ra">– Kadri L., Mähe</div></div>
+      <div class="rc"><div class="rs">★★★★★</div><p class="rtx">"Meie aed on nüüd täiesti teistsugune. Naabridki kiitsid!"</p><div class="ra">– Toomas R., Muuga</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING -->
+<div id="booking" class="ps">
+  <div class="bks" style="padding-top:4rem">
+    <div class="bki">
+      <div style="text-align:center">
+        <div class="ey">Hinnapäring</div>
+        <h2 class="st">Küsi tasuta hinda</h2>
+        <p class="ss" style="margin:0 auto">Täida vorm ja vastame 24 tunni jooksul tasuta hinnapakkumisega</p>
+      </div>
+      <div class="fw">
+        <div id="pkgBanner" style="display:none" class="pkg-sel-banner">
+          <div class="psb-icon">📦</div>
+          <div class="psb-text" id="pkgBannerText">Valitud pakett: Standard</div>
+          <button class="psb-clear" onclick="clearPkg()">Tühista valik</button>
+        </div>
+
+        <div class="fr">
+          <div class="fg"><label class="fl2">Eesnimi *</label><input type="text" class="fi2" id="fname" placeholder="Sinu eesnimi"></div>
+          <div class="fg"><label class="fl2">Perekonnanimi *</label><input type="text" class="fi2" id="lname" placeholder="Sinu perekonnanimi"></div>
+        </div>
+        <div class="fr">
+          <div class="fg"><label class="fl2">Telefon *</label><input type="tel" class="fi2" id="phone" placeholder="+372 56877101"></div>
+          <div class="fg"><label class="fl2">E-post *</label><input type="email" class="fi2" id="email" placeholder="sinu@email.ee"></div>
+        </div>
+        <div class="fg"><label class="fl2">Aadress *</label><input type="text" class="fi2" id="addr" placeholder="Tänav, maja number, linn"></div>
+        <div class="fr">
+          <div class="fg"><label class="fl2">Soovitud kuupäev</label><input type="date" class="fi2" id="fdate"></div>
+          <div class="fg">
+            <label class="fl2">Vali sobiv alustusaeg</label>
+            <select class="fsel" id="ftime">
+              <option value="">Vali alustusaeg</option>
+              <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+              <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <option>16:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="fl2">Vali soovitud teenused *</label>
+          <div class="scbs">
+            <label class="cbi"><input type="checkbox" value="Muruniitmine" class="svc-cb"> 🌿 Muruniitmine</label>
+            <label class="cbi"><input type="checkbox" value="Heki lõikamine" class="svc-cb"> ✂️ Heki lõikamine</label>
+            <label class="cbi"><input type="checkbox" value="Umbrohu korjamine" class="svc-cb"> 🌱 Umbrohu korjamine</label>
+            <label class="cbi"><input type="checkbox" value="Trimmeriga lõikamine" class="svc-cb"> 🔧 Trimmeriga lõikamine</label>
+            <label class="cbi"><input type="checkbox" value="Survepesu" class="svc-cb"> 💧 Survepesu</label>
+            <label class="cbi"><input type="checkbox" value="Sammalde eemaldamine" class="svc-cb"> 🧹 Sammalde eemaldamine</label>
+            <label class="cbi"><input type="checkbox" value="Õietolmu pesemine" class="svc-cb"> 🌸 Õietolmu pesemine</label>
+            <label class="cbi"><input type="checkbox" value="Multšimine" class="svc-cb"> 🍂 Multšimine</label>
+            <label class="cbi"><input type="checkbox" value="Okste eemaldamine" class="svc-cb"> 🌳 Okste eemaldamine</label>
+          </div>
+        </div>
+
+        <div class="fg"><label class="fl2">Lisainfo / erisoovid</label><textarea class="fi2 fta" id="notes" placeholder="Kirjelda oma aeda, erisoovid, aia suurus jne..."></textarea></div>
+        <button class="subbtn" onclick="submitForm()">📩 Saada hinnapäring</button>
+        <p class="fnote">✅ Vastame 24 tunni jooksul · Tasuta hinnapakkumine · Ilma kohustuseta<br>Päring saadetakse aadressile: <strong>info@kenahoov.ee</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="ps">
+  <div class="cts" style="padding-top:4rem">
+    <div class="cti">
+      <div>
+        <h2 class="ctt" style="font-family:'Playfair Display',serif">Võta ühendust</h2>
+        <p class="ctb">Oleme siin, et aidata. Küsi julgelt küsimusi või broneeri aeg!</p>
+        <div class="ctis">
+          <div class="cit"><div class="cion">📞</div><div><div class="cdl">Telefon</div><div class="cdv">+372 56877101</div></div></div>
+          <div class="cit"><div class="cion">📧</div><div><div class="cdl">E-post</div><div class="cdv">info@kenahoov.ee</div></div></div>
+          <div class="cit"><div class="cion">📍</div><div><div class="cdl">Asukoht</div><div class="cdv">Tallinn, Eesti</div></div></div>
+          <div class="cit"><div class="cion">⏰</div><div><div class="cdl">Tööaeg</div><div class="cdv">E–R: 8:00–18:00 · L: 9:00–15:00</div></div></div>
+          <div class="cit"><div class="cion">📱</div><div><div class="cdl">Sotsiaalmeedia</div><div class="cdv">Facebook · Instagram @kenahoov</div></div></div>
+        </div>
+      </div>
+      <div class="cfw">
+        <div class="cft">Saada sõnum</div>
+        <input type="text" class="cin" placeholder="Sinu nimi">
+        <input type="email" class="cin" placeholder="E-posti aadress">
+        <input type="tel" class="cin" placeholder="Telefon (valikuline)">
+        <textarea class="cin" style="height:100px;resize:vertical" placeholder="Sinu sõnum..."></textarea>
+        <button class="cta2" onclick="alert('Sõnum saadetud! Võtame varsti ühendust.\ninfo@kenahoov.ee · +372 56877101')">Saada sõnum →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><p>© 2025 Kenahoov OÜ · Tallinn, Eesti · <a href="mailto:info@kenahoov.ee">info@kenahoov.ee</a> · +372 56877101</p></footer>
+
+<script>
+var selectedPkg = null;
+
+function sp(id){
+  document.querySelectorAll('.ps').forEach(s=>s.classList.remove('active'));
+  var el=document.getElementById(id);
+  if(el){el.classList.add('active');window.scrollTo(0,0);}
+}
+
+function toggleMenu(){document.getElementById('mm').classList.toggle('open')}
+function cm(){document.getElementById('mm').classList.remove('open')}
+
+function toggleFaq(btn){
+  var item=btn.parentElement;
+  var wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.fitem').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+function selectPkg(name, services){
+  selectedPkg = {name: name, services: services};
+  sp('booking');
+  setTimeout(function(){
+    document.querySelectorAll('.svc-cb').forEach(function(cb){cb.checked=false;});
+    services.forEach(function(svc){
+      document.querySelectorAll('.svc-cb').forEach(function(cb){
+        if(cb.value===svc) cb.checked=true;
+      });
+    });
+    var banner = document.getElementById('pkgBanner');
+    var bannerText = document.getElementById('pkgBannerText');
+    if(name==='Kohandatud'){
+      banner.style.display='none';
+    } else {
+      bannerText.textContent = 'Valitud pakett: ' + name;
+      banner.style.display='flex';
+    }
+  }, 100);
+}
+
+function clearPkg(){
+  selectedPkg = null;
+  document.getElementById('pkgBanner').style.display='none';
+  document.querySelectorAll('.svc-cb').forEach(function(cb){cb.checked=false;});
+}
+
+function submitForm(){
+  var fname = document.getElementById('fname').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var addr = document.getElementById('addr').value.trim();
+  var checked = document.querySelectorAll('.svc-cb:checked');
+
+  if(!fname){alert('Palun sisesta oma eesnimi.');return;}
+  if(!phone){alert('Palun sisesta telefoninumber.');return;}
+  if(!email){alert('Palun sisesta e-posti aadress.');return;}
+  if(!addr){alert('Palun sisesta aadress.');return;}
+  if(checked.length===0){alert('Palun vali vähemalt üks teenus!');return;}
+
+  var svcs = Array.from(checked).map(function(c){return c.value;}).join(', ');
+  var pkg = selectedPkg ? ' (Pakett: ' + selectedPkg.name + ')' : '';
+  var date = document.getElementById('fdate').value;
+  var time = document.getElementById('ftime').value;
+  var notes = document.getElementById('notes').value;
+
+  var msg = '✅ Hinnapäring saadetud!\n\n';
+  msg += 'Nimi: ' + fname + ' ' + document.getElementById('lname').value + '\n';
+  msg += 'Tel: ' + phone + '\n';
+  msg += 'E-post: ' + email + '\n';
+  msg += 'Aadress: ' + addr + '\n';
+  if(date) msg += 'Kuupäev: ' + date + '\n';
+  if(time) msg += 'Alustusaeg: ' + time + '\n';
+  msg += 'Teenused: ' + svcs + pkg + '\n';
+  if(notes) msg += 'Lisainfo: ' + notes + '\n';
+  msg += '\nVõtame ühendust 24 tunni jooksul!\ninfo@kenahoov.ee · +372 56877101';
+
+  alert(msg);
+
+  document.getElementById('fname').value='';
+  document.getElementById('lname').value='';
+  document.getElementById('phone').value='';
+  document.getElementById('email').value='';
+  document.getElementById('addr').value='';
+  document.getElementById('fdate').value='';
+  document.getElementById('ftime').value='';
+  document.getElementById('notes').value='';
+  clearPkg();
+}
+</script>
+</body>
+</html>
